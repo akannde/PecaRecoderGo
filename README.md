@@ -52,7 +52,7 @@ Windows, Linux, OSXで動作することを目指す
 
 - Bower
 - Angular 1.3.x
-- Polymer
+- angular-material
 - jQueryは使わない
 
 ## JS
