@@ -99,6 +99,13 @@ func NewSettings() *Settings {
 	}
 }
 
+// LoadSettings は指定パスから設定情報を読み込む関数
+func LoadSettings(path string) (*Settings, error) {
+	var settings Settings
+	_, err := toml.DecodeFile(path, &settings)
+	return &settings, err
+}
+
 // Encode は SettingモデルをTOML構造へエンコードする関数
 func (s *Settings) Encode() (*bytes.Buffer, error) {
 	var buffer bytes.Buffer

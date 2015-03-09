@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"reflect"
 	"testing"
 
 	"github.com/PyYoshi/PecaRecoderGo/Backend/util"
@@ -29,4 +30,23 @@ func TestSaveSettings(t *testing.T) {
 		return
 	}
 	os.Remove(path)
+}
+
+func TestLoadSettings(t *testing.T) {
+	tempDir := os.TempDir()
+	path := filepath.Join(tempDir, "PecaRecoderGo.tml")
+	settings := NewSettings()
+	err := settings.Save(path)
+	if err != nil {
+		t.Error(err)
+	}
+
+	newSettings, err := LoadSettings(path)
+	if err != nil {
+		t.Error(err)
+	}
+
+	if !reflect.DeepEqual(settings, newSettings) {
+		t.Error("設定情報が一致しません.")
+	}
 }
