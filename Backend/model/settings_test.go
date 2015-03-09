@@ -22,8 +22,11 @@ func TestEncodeSettings(t *testing.T) {
 func TestSaveSettings(t *testing.T) {
 	tempDir := os.TempDir()
 	path := filepath.Join(tempDir, "PecaRecoderGo.tml")
-	setting := NewSettings()
-	setting.Save(path)
+	settings := NewSettings()
+	err := settings.Save(path)
+	if err != nil {
+		t.Error(err)
+	}
 	if !util.IsExistFile(path) {
 		os.Remove(path)
 		t.Error("設定ファイルが正しく保存されていません.")
