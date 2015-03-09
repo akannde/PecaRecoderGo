@@ -1,7 +1,6 @@
 package model
 
 import (
-	"fmt"
 	"os"
 	"path/filepath"
 	"reflect"
@@ -12,11 +11,11 @@ import (
 
 func TestEncodeSettings(t *testing.T) {
 	setting := NewSettings()
-	buffer, err := setting.Encode()
+	_, err := setting.Encode()
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("%v\n", buffer.String())
+	// fmt.Printf("%v\n", buffer.String())
 }
 
 func TestSaveSettings(t *testing.T) {
