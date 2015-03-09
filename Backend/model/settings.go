@@ -7,7 +7,7 @@ import (
 	"github.com/BurntSushi/toml"
 )
 
-// Settings は
+// Settings は設定情報を扱うための構造体
 type Settings struct {
 	YellowPage   []YellowPageSetting
 	Notification NotificationSetting
@@ -107,7 +107,7 @@ func (s *Settings) Encode() (*bytes.Buffer, error) {
 	return &buffer, err
 }
 
-// Save は
+// Save は指定パスに設定ファイルを保存する関数
 func (s *Settings) Save(path string) error {
 	fp, err := os.Create(path)
 	defer fp.Close()
