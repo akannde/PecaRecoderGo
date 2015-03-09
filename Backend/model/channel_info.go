@@ -55,8 +55,8 @@ func NewChannelInfo(
 	}
 }
 
-// BuildBroadcastingURL は
-func (c *ChannelInfo) BuildBroadcastingURL(srvAddr string) string {
+// BuildStreamingURL はストリーミングURLを生成する関数
+func (c *ChannelInfo) BuildStreamingURL(srvAddr string) string {
 	return fmt.Sprintf("http://%s/pls/%s?tip=%s", srvAddr, c.ChanID, c.BroadcastingAddr)
 }
 
