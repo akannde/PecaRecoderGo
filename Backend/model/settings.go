@@ -14,6 +14,7 @@ type Settings struct {
 	Style        StyleSetting
 	Player       []PlayerSetting
 	Favorite     []FavoriteSetting
+	Recoding     []RecodingSetting
 }
 
 // NewSettings は新しいSettingインスタンを生成する
@@ -161,4 +162,10 @@ type FavoriteSetting struct {
 	Name        string `toml:"name"`         // 表示名
 	RegexString string `toml:"regex_string"` // 正規表現文字列
 	Enabled     bool   `toml:"enabled"`      // 有効無効
+}
+
+// RecodingSetting はTOML用モデル
+type RecodingSetting struct {
+	OutputDirectory      string `toml:"output_dir"`             // 録画ファイル保存先ディレクトリ
+	OutputFilenameFormat string `toml:"output_filename_format"` // ファイル名フォーマット %CHANNEL_NAME%: チャンネル名 %TIMESTAMP%: 録画開始時間
 }
