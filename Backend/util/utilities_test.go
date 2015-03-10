@@ -23,3 +23,10 @@ func TestIsExistFile(t *testing.T) {
 	}
 	os.Remove(path)
 }
+
+func TestGetApplicationDirectory(t *testing.T) {
+	_, err := GetApplicationConfigDirectory("PecaRecoderGo")
+	if err != nil {
+		t.Error(err)
+	}
+}
