@@ -7,6 +7,8 @@ func TestBuildStreamingURL(t *testing.T) {
 	srvAddr := "127.0.0.1:7144"
 	chanID := "1068A408B588A4BC6BA150B950EF6E24"
 	broadcastingAddr := "123.456.78.910:7144"
+	yp := NewYellowPageInfo("SP", "http://example.com/index.txt", "http://example.com/uptest.php")
+
 	channel := NewChannelInfo(
 		"hoge",
 		chanID,
@@ -21,7 +23,7 @@ func TestBuildStreamingURL(t *testing.T) {
 		"11:11",
 		"click",
 		"comment",
-		"SP",
+		*yp,
 	)
 	if channel.BuildStreamingURL(srvAddr) != validURL {
 		t.Error("配信中のURLが正しく生成されていません.")

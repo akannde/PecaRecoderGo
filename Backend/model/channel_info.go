@@ -4,20 +4,20 @@ import "fmt"
 
 // ChannelInfo はindex.txtをパースした時の構造体
 type ChannelInfo struct {
-	Name             string
-	ChanID           string
-	BroadcastingAddr string
-	ContactURL       string
-	Genre            string
-	Description      string
-	Views            int64
-	Relays           int64
-	Bitrate          int64
-	StreamingType    string
-	BroadcastingTime string
-	Status           string
-	Comment          string
-	YellowPage       string
+	Name             string `gorm:"column:name"`
+	ChanID           string `gorm:"column:chan_id;primary_key:yes"`
+	BroadcastingAddr string `gorm:"column:broadcasting_addr"`
+	ContactURL       string `gorm:"column:contact_url"`
+	Genre            string `gorm:"column:genre"`
+	Description      string `gorm:"column:description"`
+	Views            int64  `gorm:"column:views"`
+	Relays           int64  `gorm:"column:relays"`
+	Bitrate          int64  `gorm:"column:bitrate"`
+	StreamingType    string `gorm:"column:streaming_type"`
+	BroadcastingTime string `gorm:"column:broadcasting_time"`
+	Status           string `gorm:"column:status"`
+	Comment          string `gorm:"column:comment"`
+	YellowPage       YellowPageInfo
 }
 
 // NewChannelInfo はChannelInfo生成するための関数
@@ -35,7 +35,7 @@ func NewChannelInfo(
 	broadcastingTime string,
 	status string,
 	comment string,
-	yp string,
+	yp YellowPageInfo,
 ) *ChannelInfo {
 	return &ChannelInfo{
 		Name:             name,
